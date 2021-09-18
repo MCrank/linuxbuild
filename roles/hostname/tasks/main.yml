@@ -4,11 +4,11 @@
   lineinfile:
     path: /etc/hosts
     regexp: '^127\.0\.1\.1'
-    line: '127.0.1.1 ${{ hostname }}'
+    line: "127.0.1.1{{ '\t' }}{{ hostname }}"
 
 - name: Set /etc/hostname
   become: yes
   lineinfile:
     path: /etc/hostname
     regexp: '.*'
-    line: ${{ hostname }}
+    line: '{{ hostname }}'

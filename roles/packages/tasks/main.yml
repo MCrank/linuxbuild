@@ -1,0 +1,13 @@
+---
+---
+- name: Install Apt Keys
+  become: yes
+  apt_key:
+    id: '{{ item.id }}'
+    url: '{{ item.url }}'
+  register: keys
+  loop: '{{ apt-keys }}'
+
+- name: View apt-keys output
+  debug:
+    var: keys

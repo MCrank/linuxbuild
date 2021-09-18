@@ -1,0 +1,26 @@
+hostname: drifter
+apt-keys:
+  # NodeJs
+  - id: 9FD3B784BC1C6FC31A8A0A1C1655A0AB68576280
+    url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
+    keyring: /usr/share/keyrings/nodesource.gpg
+  # Docker
+  - id:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    leyring: /usr/share/keyrings/docker-archive-keyring.gpg
+packages:
+  - docker-ce
+  # - gnome-shell-extension-appindicator
+  # - jq
+  - nodejs
+  # - snapd
+  # - steam
+  # - tilix
+  # - zsh
+
+  # - enpass
+  # - gimp
+  # - vim
+  # - google-chrome-stable
+  # - python3-pip
+  # - nautilus-image-converter
