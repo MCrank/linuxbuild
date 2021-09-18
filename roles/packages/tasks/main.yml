@@ -1,13 +1,28 @@
 ---
----
 - name: Install Apt Keys
   become: yes
   apt_key:
-    id: '{{ item.id }}'
-    url: '{{ item.url }}'
+    id: "{{ item.id }}"
+    url: "{{ item.url }}"
+    keyring: "{{ item.keyring }}"
   register: keys
-  loop: '{{ apt-keys }}'
+  loop: "{{ aptKeys }}"
 
 - name: View apt-keys output
   debug:
     var: keys
+
+- name: Install Apt Repos
+  become: yes
+  apt_repository:
+    filename: "{{ item.file }}"
+    repo: "{{ item.repo }}"
+  register: repos
+  loop: "{{ aptRepos }}"
+
+- name: Install Apt Packages
+  become: yes
+  apt:
+    pkg:
+    - docker-ce
+    - nodejs

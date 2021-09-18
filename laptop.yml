@@ -1,7 +1,7 @@
 ---
 - hosts: localhost
   vars_files:
-    - /group_vars/global.yml
+    - group_vars/global.yml
 
   roles:
     - role: hostname
