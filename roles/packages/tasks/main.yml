@@ -23,6 +23,5 @@
 - name: Install Apt Packages
   become: yes
   apt:
-    pkg:
-    - docker-ce
-    - nodejs
+    name: "{{ item }}"
+  loop: "{{ aptPackages }}"

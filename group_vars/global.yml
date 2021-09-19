@@ -5,9 +5,9 @@ appVersions:
 
 aptKeys:
   # NodeJs
-  - id: 9FD3B784BC1C6FC31A8A0A1C1655A0AB68576280
+  - id: 68576280
     url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
-    keyring: /usr/share/keyrings/nodesource.gpg
+    keyring: /usr/share/keyrings/nodesource-archive-keyring.gpg
   # Docker
   - id: 0EBFCD88
     url: https://download.docker.com/linux/ubuntu/gpg
@@ -15,19 +15,21 @@ aptKeys:
 
 aptRepos:
   - file: nodesource
-    repo: deb https://deb.nodesource.com/{{ appVersions.node }} {{ ansible_lsb.codename }} main
+    repo: deb [signed-by=/usr/share/keyrings/nodesource-archive-keyring.gpg] https://deb.nodesource.com/{{ appVersions.node }} {{ ansible_lsb.codename }} main
+  - file: nodesource
+    repo: deb-src [signed-by=/usr/share/keyrings/nodesource-archive-keyring.gpg] https://deb.nodesource.com/{{ appVersions.node }} {{ ansible_lsb.codename }} main
   - file: docker
-    repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_lsb.codename }} stable
+    repo: deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu {{ ansible_lsb.codename }} stable
 
-packages:
+aptPackages:
   - docker-ce
-  # - gnome-shell-extension-appindicator
-  # - jq
+  - gnome-shell-extension-appindicator
+  - jq
   - nodejs
-  # - snapd
-  # - steam
-  # - tilix
-  # - zsh
+  - snapd
+  - steam
+  - tilix
+  - zsh
 
   # - enpass
   # - gimp

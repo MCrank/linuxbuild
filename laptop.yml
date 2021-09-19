@@ -6,3 +6,6 @@
   roles:
     - role: hostname
       tags: hostname
+
+    - role: packages
+      tags: packages
