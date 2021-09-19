@@ -25,3 +25,10 @@
   apt:
     name: "{{ item }}"
   loop: "{{ aptPackages }}"
+
+- name: Install snaps
+  become: yes
+  community.general.snap:
+    name: "{{ item }}"
+    classic: yes
+  loop: "{{ snapPackages }}"

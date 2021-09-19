@@ -37,3 +37,9 @@ aptPackages:
   # - google-chrome-stable
   # - python3-pip
   # - nautilus-image-converter
+
+snapPackages:
+  - slack
+  - kubectl
+  - helm
+  - code
