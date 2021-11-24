@@ -32,3 +32,15 @@
     name: "{{ item }}"
     classic: yes
   loop: "{{ snapPackages }}"
+
+# - name: Install Flatpaks
+#   become: yes
+#   flatpak:
+#     name: "{{ item.name }}"
+#     remote: "{{ item.repository }}"
+#   loop: "{{ flatPaks }}"
+
+- name: Install Zoom
+  become: yes
+  apt:
+    deb: https://zoom.us/client/latest/zoom_amd64.deb
