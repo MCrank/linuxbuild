@@ -1,0 +1,47 @@
+---
+- name: Install Apt Keys
+  become: yes
+  apt_key:
+    id: "{{ item.id }}"
+    url: "{{ item.url }}"
+    keyring: "{{ item.keyring }}"
+  register: keys
+  loop: "{{ aptKeys }}"
+
+- name: View apt-keys output
+  debug:
+    var: keys
+
+- name: Install Apt Repos
+  become: yes
+  apt_repository:
+    filename: "{{ item.file }}"
+    repo: "{{ item.repo }}"
+  register: repos
+  loop: "{{ aptRepos }}"
+
+- name: Install Apt Packages
+  become: yes
+  apt:
+    name: "{{ item }}"
+  loop: "{{ aptPackages }}"
+
+- name: Install snaps
+  become: yes
+  community.general.snap:
+    name: "{{ item }}"
+    classic: yes
+  loop: "{{ snapPackages }}"
+
+# Future use if I need to install a Flatpak
+# - name: Install Flatpaks
+#   become: yes
+#   flatpak:
+#     name: "{{ item.name }}"
+#     remote: "{{ item.repository }}"
+#   loop: "{{ flatPaks }}"
+
+- name: Install Zoom
+  become: yes
+  apt:
+    deb: https://zoom.us/client/latest/zoom_amd64.deb
