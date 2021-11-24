@@ -33,6 +33,7 @@
     classic: yes
   loop: "{{ snapPackages }}"
 
+# Future use if I need to install a Flatpak
 # - name: Install Flatpaks
 #   become: yes
 #   flatpak:
